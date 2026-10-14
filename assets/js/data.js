@@ -23,9 +23,12 @@
       zip: "02404-000"
     },
     phone: { display: "(11) 2977-6777", tel: "+551129776777" },
+    // Link da página da La Brunet no iFood (ex.:
+    // "https://www.ifood.com.br/delivery/sao-paulo-sp/la-brunet-santana/...").
+    // Enquanto for null, os botões abrem a busca do iFood por "La Brunet".
+    ifoodUrl: null,
     // Número de WhatsApp da loja no formato internacional, só dígitos
-    // (ex.: "5511999999999"). Enquanto for null, o pedido é copiado e o
-    // cliente é convidado a ligar para a loja.
+    // (ex.: "5511999999999"). Enquanto for null, o contato mostra só o telefone.
     whatsapp: null,
     instagram: null,
     email: null,
@@ -45,16 +48,6 @@
         { day: 6, open: "06:00", close: "21:00" }
       ]
     },
-    orders: {
-      // Antecedência mínima, em horas, para retirar uma encomenda.
-      leadHours: 24,
-      // Quantos dias à frente o calendário de encomendas mostra.
-      windowDays: 14,
-      // Intervalo entre horários de retirada, em minutos.
-      slotMinutes: 30,
-      // Margem depois de abrir e antes de fechar, em minutos.
-      slotMarginMinutes: 60
-    },
     // Enquanto true, os preços aparecem como valores de referência.
     pricesAreSample: true
   };
@@ -66,7 +59,7 @@
     { id: "cafe", label: "Café da manhã", intro: "Na chapa, no prato e na xícara." },
     { id: "pizzas", label: "Pizzas", intro: "Massa da casa, forno quente, à noite e no fim de semana." },
     { id: "bebidas", label: "Bebidas", intro: "Cafés, chás gelados e sucos da fruta." },
-    { id: "festas", label: "Encomendas & festas", intro: "Para aniversários, reuniões e cafés do escritório. Sob encomenda." }
+    { id: "festas", label: "Encomendas & festas", intro: "Para aniversários, reuniões e cafés do escritório. Sob encomenda pelo telefone (11) 2977-6777." }
   ];
 
   // price em reais; unit descreve a unidade vendida.
@@ -114,11 +107,11 @@
     { id: "suco-laranja", cat: "bebidas", name: "Suco de laranja", desc: "Espremido na hora.", price: 12, unit: "copo 400 ml", tags: ["vegano"], featured: false },
 
     // Encomendas & festas
-    { id: "bolo-inteiro", cat: "festas", name: "Bolo de aniversário", desc: "Recheios: brigadeiro, ninho com morango, doce de leite ou chocolate belga. Diga o sabor nas observações.", price: 120, unit: "kg (mínimo 2 kg)", tags: ["encomenda"], featured: false, min: 2 },
-    { id: "cento-salgados", cat: "festas", name: "Cento de salgadinhos", desc: "Coxinha, risoles, bolinha de queijo e quibe, fritos na hora da retirada.", price: 95, unit: "cento", tags: ["encomenda"], featured: false },
+    { id: "bolo-inteiro", cat: "festas", name: "Bolo de aniversário", desc: "Recheios: brigadeiro, ninho com morango, doce de leite ou chocolate belga.", price: 120, unit: "kg (mínimo 2 kg)", tags: ["encomenda"], featured: false },
+    { id: "cento-salgados", cat: "festas", name: "Cento de salgadinhos", desc: "Coxinha, risoles, bolinha de queijo e quibe, fritos na hora.", price: 95, unit: "cento", tags: ["encomenda"], featured: false },
     { id: "cento-docinhos", cat: "festas", name: "Cento de docinhos", desc: "Brigadeiro, beijinho e bicho de pé, em forminhas.", price: 140, unit: "cento", tags: ["encomenda"], featured: false },
     { id: "pao-metro", cat: "festas", name: "Pão de metro recheado", desc: "Frios, salada e molho da casa. Serve cerca de 15 pessoas.", price: 160, unit: "metro", tags: ["encomenda"], featured: false },
-    { id: "cesta-cafe", cat: "festas", name: "Cesta de café da manhã", desc: "Para presentear: pães, bolo, frios, frutas, geleia e café. Diga o nome do presenteado nas observações.", price: 189, unit: "cesta (2 pessoas)", tags: ["encomenda"], featured: false }
+    { id: "cesta-cafe", cat: "festas", name: "Cesta de café da manhã", desc: "Para presentear: pães, bolo, frios, frutas, geleia e café.", price: 189, unit: "cesta (2 pessoas)", tags: ["encomenda"], featured: false }
   ];
 
   var gallery = [

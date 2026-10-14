@@ -4,10 +4,10 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>La Brunet · Padaria, confeitaria e café em Santana, São Paulo</title>
-  <meta name="description" content="La Brunet: pães de fermentação natural, salgados, confeitaria, café da manhã e pizzas na Rua Pedro Doll, 115, em Santana, São Paulo. Veja o cardápio e faça sua encomenda.">
+  <meta name="description" content="La Brunet: pães de fermentação natural, salgados, confeitaria, café da manhã e pizzas na Rua Pedro Doll, 115, em Santana, São Paulo. Veja o cardápio e peça pelo iFood.">
   <meta name="theme-color" content="#2a1a10">
   <meta property="og:title" content="La Brunet · Padaria em Santana">
-  <meta property="og:description" content="Pães, confeitaria e café na Rua Pedro Doll, 115. Cardápio e encomendas online.">
+  <meta property="og:description" content="Pães, confeitaria e café na Rua Pedro Doll, 115. Cardápio online e delivery pelo iFood.">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="pt_BR">
   <meta property="og:image" content="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&q=75&w=1200&h=630">
@@ -58,7 +58,6 @@
     <symbol id="i-phone" viewBox="0 0 24 24"><path d="M6.5 3.5h3l1.5 4-2 1.5a11 11 0 0 0 6 6l1.5-2 4 1.5v3a2 2 0 0 1-2 2A16 16 0 0 1 4.5 5.5a2 2 0 0 1 2-2Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
     <symbol id="i-car" viewBox="0 0 24 24"><path d="M4 16v-4l2-5h12l2 5v4M4 16h16M4 16v2.5M20 16v2.5M7.5 13h.01M16.5 13h.01" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
     <symbol id="i-star" viewBox="0 0 24 24"><path d="m12 3.5 2.6 5.4 5.9.8-4.3 4.1 1 5.8L12 16.8l-5.2 2.8 1-5.8-4.3-4.1 5.9-.8L12 3.5Z" fill="currentColor"/></symbol>
-    <symbol id="i-copy" viewBox="0 0 24 24"><rect x="8" y="8" width="11" height="12" rx="2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M5 15V6a2 2 0 0 1 2-2h8" fill="none" stroke="currentColor" stroke-width="1.6"/></symbol>
     <symbol id="i-wa" viewBox="0 0 24 24"><path d="M4 20l1.2-4.1A8 8 0 1 1 8.4 19L4 20Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M9 8.5c0 3.5 3 6.5 6.5 6.5l1-1.6-2-1-1 .8c-1.2-.5-2.2-1.5-2.7-2.7l.8-1-1-2L9 8.5Z" fill="currentColor"/></symbol>
   </svg>
 
@@ -82,14 +81,13 @@
         <nav class="nav" aria-label="Principal">
           <a href="#cardapio" data-nav>Cardápio</a>
           <a href="#historia" data-nav>A casa</a>
-          <a href="#encomendas" data-nav>Encomendas</a>
+          <a href="#delivery" data-nav>Delivery</a>
           <a href="#visite" data-nav>Visite</a>
         </nav>
         <div class="bar__actions">
-          <a class="btn btn--accent btn--sm bag" href="#encomendas" data-bag-link>
+          <a class="btn btn--accent btn--sm bag" href="https://www.ifood.com.br/busca?q=La%20Brunet" target="_blank" rel="noopener" data-ifood aria-label="Pedir no iFood (abre em nova aba)">
             <svg class="ico" aria-hidden="true"><use href="#i-bag"/></svg>
-            <span class="bag__label">Encomendar</span>
-            <span class="bag__count" data-bag-count hidden>0</span>
+            <span class="bag__label">Pedir no iFood</span>
           </a>
           <button class="menu-btn" type="button" aria-expanded="false" aria-controls="drawer" aria-label="Abrir menu" data-menu-open>
             <span class="menu-btn__lines" aria-hidden="true"></span><span class="menu-btn__label">Menu</span>
@@ -110,12 +108,12 @@
         <a href="#fornada" data-drawer-link><span>02</span>Da fornada</a>
         <a href="#cardapio" data-drawer-link><span>03</span>Cardápio</a>
         <a href="#historia" data-drawer-link><span>04</span>A casa</a>
-        <a href="#encomendas" data-drawer-link><span>05</span>Encomendas</a>
+        <a href="#delivery" data-drawer-link><span>05</span>Delivery</a>
         <a href="#galeria" data-drawer-link><span>06</span>Galeria</a>
         <a href="#visite" data-drawer-link><span>07</span>Visite</a>
       </nav>
       <div class="drawer__foot">
-        <a class="btn btn--accent" href="#encomendas" data-drawer-link>Fazer uma encomenda</a>
+        <a class="btn btn--accent" href="https://www.ifood.com.br/busca?q=La%20Brunet" target="_blank" rel="noopener" data-ifood data-drawer-link>Pedir no iFood<span class="sr-only"> (abre em nova aba)</span></a>
         <p>Rua Pedro Doll, 115<br>Santana, São Paulo</p>
         <a class="link" href="tel:+551129776777">(11) 2977-6777</a>
       </div>
@@ -137,13 +135,13 @@
         <p class="hero__lead reveal">Pão saindo do forno ao longo do dia, vitrine de doces, café da manhã sem pressa e pizza à noite. Na Rua Pedro Doll, com estacionamento na porta.</p>
         <div class="hero__ctas reveal">
           <a class="btn btn--accent" href="#cardapio">Ver o cardápio <svg class="ico" aria-hidden="true"><use href="#i-down"/></svg></a>
-          <a class="btn btn--ghost-light" href="#encomendas">Fazer uma encomenda</a>
+          <a class="btn btn--ghost-light" href="https://www.ifood.com.br/busca?q=La%20Brunet" target="_blank" rel="noopener" data-ifood>Pedir no iFood<span class="sr-only"> (abre em nova aba)</span></a>
         </div>
       </div>
       <ul class="hero__facts wrap" aria-label="Destaques da casa">
         <li><svg class="ico" aria-hidden="true"><use href="#i-star"/></svg><span><strong>4,3 no Google</strong> mais de 4.800 avaliações</span></li>
         <li><svg class="ico" aria-hidden="true"><use href="#i-car"/></svg><span><strong>Estacionamento grátis</strong> com manobrista</span></li>
-        <li><svg class="ico" aria-hidden="true"><use href="#i-bag"/></svg><span><strong>Encomendas</strong> com retirada marcada</span></li>
+        <li><svg class="ico" aria-hidden="true"><use href="#i-bag"/></svg><span><strong>Delivery</strong> pelo iFood</span></li>
       </ul>
     </section>
 
@@ -153,7 +151,7 @@
         <div class="chapter__head">
           <p class="eyebrow"><span class="num">01</span> Da fornada</p>
           <h2 class="display reveal" id="fornada-title">O que sai<br><em>do forno.</em></h2>
-          <p class="chapter__lead reveal">Cinco motivos para atravessar Santana logo cedo. Todos podem entrar na sua encomenda.</p>
+          <p class="chapter__lead reveal">Cinco motivos para atravessar Santana logo cedo — ou para pedir em casa pelo iFood.</p>
         </div>
         <div class="feature-grid" data-featured></div>
       </div>
@@ -167,7 +165,7 @@
             <p class="eyebrow"><span class="num">02</span> Cardápio</p>
             <h2 class="display reveal" id="cardapio-title">Do balcão<br><em>à mesa.</em></h2>
           </div>
-          <p class="chapter__lead reveal">Pães, salgados, confeitaria, café da manhã, pizzas e bebidas. Toque em <strong>+</strong> para montar sua encomenda.</p>
+          <p class="chapter__lead reveal">Pães, salgados, confeitaria, café da manhã, pizzas e bebidas. Para receber em casa, peça pelo <a class="link" href="https://www.ifood.com.br/busca?q=La%20Brunet" target="_blank" rel="noopener" data-ifood>iFood<span class="sr-only"> (abre em nova aba)</span></a>.</p>
         </div>
 
         <div class="menu__tools">
@@ -178,7 +176,7 @@
             <input type="search" placeholder="Buscar: vegano, croissant, pizza…" autocomplete="off" data-search>
           </label>
         </div>
-        <p class="price-note" data-price-note hidden>Preços de referência. O valor final é confirmado pela loja ao receber a encomenda.</p>
+        <p class="price-note" data-price-note hidden>Preços de referência, podem variar na loja e no iFood.</p>
         <div class="menu__list" data-menu aria-live="polite"></div>
       </div>
     </section>
@@ -215,81 +213,36 @@
       </div>
     </section>
 
-    <!-- ===================== Encomendas ===================== -->
-    <section class="chapter order" id="encomendas" aria-labelledby="encomendas-title">
+    <!-- ===================== Delivery ===================== -->
+    <section class="chapter order" id="delivery" aria-labelledby="delivery-title">
       <div class="wrap">
         <div class="chapter__head chapter__head--split">
           <div>
-            <p class="eyebrow eyebrow--light"><span class="num">04</span> Encomendas</p>
-            <h2 class="display reveal" id="encomendas-title">Encomende,<br><em>a gente separa.</em></h2>
+            <p class="eyebrow eyebrow--light"><span class="num">04</span> Delivery</p>
+            <h2 class="display reveal" id="delivery-title">Peça em casa,<br><em>pelo iFood.</em></h2>
           </div>
-          <p class="chapter__lead reveal">Escolha os itens, o dia e o horário da retirada. A loja confirma o pedido e o valor final pelo telefone ou WhatsApp que você informar.</p>
+          <p class="chapter__lead reveal">Pães, salgados, doces, café da manhã e pizzas da La Brunet entregues na sua casa. O pedido, o pagamento e o acompanhamento são feitos no iFood.</p>
         </div>
 
-        <form class="order__form" novalidate data-order-form>
-          <div class="order__steps">
-            <fieldset class="step" data-step="1">
-              <legend class="step__title"><span class="step__n">1</span> O que vai levar</legend>
-              <div class="order__cart" data-cart></div>
-              <p class="field-error" data-error="cart" role="alert"></p>
-            </fieldset>
-
-            <fieldset class="step" data-step="2">
-              <legend class="step__title"><span class="step__n">2</span> Dia da retirada</legend>
-              <div class="days" data-days role="radiogroup" aria-label="Dia da retirada"></div>
-              <p class="field-error" data-error="date" role="alert"></p>
-            </fieldset>
-
-            <fieldset class="step" data-step="3">
-              <legend class="step__title"><span class="step__n">3</span> Horário</legend>
-              <div class="slots" data-slots role="radiogroup" aria-label="Horário da retirada"><p class="muted">Escolha o dia primeiro.</p></div>
-              <p class="field-error" data-error="time" role="alert"></p>
-            </fieldset>
-
-            <fieldset class="step" data-step="4">
-              <legend class="step__title"><span class="step__n">4</span> Seus dados</legend>
-              <div class="fields">
-                <label class="field">
-                  <span class="field__label">Nome</span>
-                  <input name="name" type="text" autocomplete="name" required maxlength="80">
-                  <span class="field-error" data-error="name" role="alert"></span>
-                </label>
-                <label class="field">
-                  <span class="field__label">Telefone ou WhatsApp</span>
-                  <input name="phone" type="tel" inputmode="tel" autocomplete="tel" required placeholder="(11) 90000-0000" maxlength="16">
-                  <span class="field-error" data-error="phone" role="alert"></span>
-                </label>
-                <label class="field field--full">
-                  <span class="field__label">Observações <em>(opcional)</em></span>
-                  <textarea name="notes" rows="3" maxlength="400" placeholder="Sabor do bolo, frase da decoração, alergias…"></textarea>
-                </label>
-              </div>
-            </fieldset>
+        <div class="delivery__grid">
+          <div class="delivery__main reveal">
+            <ol class="delivery__steps">
+              <li><span class="step__n">1</span><span><strong>Abra a La Brunet no iFood</strong> pelo botão abaixo, no app ou no site.</span></li>
+              <li><span class="step__n">2</span><span><strong>Escolha seus itens</strong> e pague por lá, do jeito que preferir.</span></li>
+              <li><span class="step__n">3</span><span><strong>Acompanhe a entrega</strong> até a sua porta.</span></li>
+            </ol>
+            <a class="btn btn--accent btn--lg" href="https://www.ifood.com.br/busca?q=La%20Brunet" target="_blank" rel="noopener" data-ifood>
+              <svg class="ico" aria-hidden="true"><use href="#i-bag"/></svg>Pedir no iFood<span class="sr-only"> (abre em nova aba)</span>
+              <svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg>
+            </a>
           </div>
 
-          <aside class="summary" aria-labelledby="summary-title">
-            <div class="summary__card">
-              <h3 class="summary__title" id="summary-title">Sua encomenda</h3>
-              <dl class="summary__rows">
-                <div><dt>Itens</dt><dd data-sum-items>Nenhum item</dd></div>
-                <div><dt>Retirada</dt><dd data-sum-when>—</dd></div>
-                <div><dt>Onde</dt><dd>Rua Pedro Doll, 115</dd></div>
-              </dl>
-              <div class="summary__total"><span>Total estimado</span><strong data-sum-total>R$ 0,00</strong></div>
-              <button class="btn btn--accent btn--block" type="submit" data-submit>
-                <svg class="ico" aria-hidden="true"><use href="#i-wa"/></svg><span data-submit-label>Enviar pedido</span>
-              </button>
-              <p class="summary__note" data-submit-note></p>
-            </div>
+          <aside class="delivery__aside reveal" aria-labelledby="festas-title">
+            <h3 class="delivery__title" id="festas-title">Bolos e festas</h3>
+            <p>Bolos inteiros, cento de salgados e docinhos, pão de metro e cestas de café da manhã são feitos sob encomenda. Fale direto com a loja.</p>
+            <a class="btn btn--dark btn--block" href="tel:+551129776777"><svg class="ico" aria-hidden="true"><use href="#i-phone"/></svg>Ligar (11) 2977-6777</a>
+            <a class="link delivery__visit" href="#visite">Prefere retirar? Veja endereço e horários</a>
           </aside>
-        </form>
-
-        <div class="tickets">
-          <div class="tickets__head">
-            <h3 class="tickets__title">Suas encomendas neste aparelho</h3>
-            <p class="muted">Ficam salvas só neste navegador, para repetir um pedido ou falar com a loja sobre ele.</p>
-          </div>
-          <ul class="tickets__list" data-tickets></ul>
         </div>
       </div>
     </section>
@@ -341,7 +294,7 @@
             <ul class="contact">
               <li><a class="link" href="tel:+551129776777"><svg class="ico" aria-hidden="true"><use href="#i-phone"/></svg>(11) 2977-6777</a></li>
               <li data-wa-contact hidden><a class="link" target="_blank" rel="noopener" data-wa-href><svg class="ico" aria-hidden="true"><use href="#i-wa"/></svg>WhatsApp<span class="sr-only"> (abre em nova aba)</span></a></li>
-              <li><a class="link" href="#encomendas"><svg class="ico" aria-hidden="true"><use href="#i-bag"/></svg>Fazer uma encomenda</a></li>
+              <li><a class="link" href="https://www.ifood.com.br/busca?q=La%20Brunet" target="_blank" rel="noopener" data-ifood><svg class="ico" aria-hidden="true"><use href="#i-bag"/></svg>Pedir no iFood<span class="sr-only"> (abre em nova aba)</span></a></li>
             </ul>
           </div>
         </div>
@@ -367,7 +320,7 @@
       <nav class="foot__nav" aria-label="Rodapé">
         <a href="#cardapio">Cardápio</a>
         <a href="#historia">A casa</a>
-        <a href="#encomendas">Encomendas</a>
+        <a href="#delivery">Delivery</a>
         <a href="#galeria">Galeria</a>
         <a href="#visite">Visite</a>
       </nav>
@@ -384,13 +337,11 @@
 
   <!-- Barra fixa do celular -->
   <div class="dock" data-dock hidden>
-    <a class="dock__btn" href="#encomendas" data-dock-link>
-      <span class="dock__info"><strong data-dock-count>0 itens</strong><span data-dock-total>R$ 0,00</span></span>
-      <span class="dock__cta">Revisar encomenda <svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></span>
+    <a class="dock__btn" href="https://www.ifood.com.br/busca?q=La%20Brunet" target="_blank" rel="noopener" data-ifood data-dock-link>
+      <span class="dock__info"><strong>Delivery La Brunet</strong><span>Peça em casa, com entrega</span></span>
+      <span class="dock__cta">Pedir no iFood<span class="sr-only"> (abre em nova aba)</span> <svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></span>
     </a>
   </div>
-
-  <div class="toast" role="status" aria-live="polite" data-toast></div>
 
   <dialog class="lightbox" data-lightbox aria-label="Foto ampliada">
     <button class="icon-btn lightbox__close" type="button" data-lightbox-close aria-label="Fechar"><svg class="ico" aria-hidden="true"><use href="#i-close"/></svg></button>
@@ -398,7 +349,7 @@
     <p class="lightbox__cap" data-lightbox-cap></p>
   </dialog>
 
-  <noscript><p class="noscript">Para ver o cardápio e fazer encomendas, ative o JavaScript ou ligue para (11) 2977-6777.</p></noscript>
+  <noscript><p class="noscript">Para ver o cardápio, ative o JavaScript. Delivery pelo iFood ou pelo telefone (11) 2977-6777.</p></noscript>
 
   <script src="assets/js/data.js"></script>
   <script src="assets/js/lib.js"></script>

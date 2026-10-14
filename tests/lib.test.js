@@ -22,27 +22,22 @@
 
   function ok(cond, msg) { if (!cond) throw new Error(msg || "condição falsa"); }
 
-  // Loja de teste com horário fixo, independente do data.js.
-  var store = {
-    name: "La Brunet",
-    pricesAreSample: false,
-    hours: {
-      confirmed: true,
-      days: [
-        { day: 0, open: "07:00", close: "13:00" },
-        { day: 2, open: "06:00", close: "21:00" },
-        { day: 3, open: "06:00", close: "21:00" },
-        { day: 4, open: "06:00", close: "21:00" },
-        { day: 5, open: "06:00", close: "21:00" },
-        { day: 6, open: "06:00", close: "21:00" }
-      ]
-    },
-    orders: { leadHours: 24, windowDays: 14, slotMinutes: 30, slotMarginMinutes: 60 }
+  // Horário fixo de teste, independente do data.js (segunda fechada).
+  var hours = {
+    confirmed: true,
+    days: [
+      { day: 0, open: "07:00", close: "13:00" },
+      { day: 2, open: "06:00", close: "21:00" },
+      { day: 3, open: "06:00", close: "21:00" },
+      { day: 4, open: "06:00", close: "21:00" },
+      { day: 5, open: "06:00", close: "21:00" },
+      { day: 6, open: "06:00", close: "21:00" }
+    ]
   };
   var products = [
-    { id: "a", name: "Pão A", desc: "Crocante", price: 1.2, unit: "unidade", tags: ["vegano"] },
-    { id: "b", name: "Bolo B", desc: "Chocolate", price: 120, unit: "kg (mínimo 2 kg)", tags: ["encomenda"], min: 2 },
-    { id: "c", name: "Coxinha", desc: "Frango com catupiry", price: 9.9, unit: "unidade", tags: [] }
+    { id: "a", cat: "paes", name: "Pão A", desc: "Crocante", price: 1.2, unit: "unidade", tags: ["vegano"] },
+    { id: "b", cat: "festas", name: "Bolo B", desc: "Chocolate", price: 120, unit: "kg", tags: ["encomenda"] },
+    { id: "c", cat: "salgados", name: "Coxinha", desc: "Frango com catupiry", price: 9.9, unit: "unidade", tags: [] }
   ];
 
   // 2026-10-14 é uma quarta-feira.
@@ -57,48 +52,39 @@
     eq(L.formatBRL(0.1 + 0.2), "R$ 0,30");
   });
 
-  test("parseHM, formatHM e shortHM", function () {
+  test("parseHM e shortHM", function () {
     eq(L.parseHM("06:30"), 390);
-    eq(L.formatHM(390), "06:30");
     eq(L.shortHM("21:00"), "21h");
     eq(L.shortHM("07:30"), "7h30");
-  });
-
-  test("formatPhone e validatePhone", function () {
-    eq(L.formatPhone("11987654321"), "(11) 98765-4321");
-    eq(L.formatPhone("1129776777"), "(11) 2977-6777");
-    ok(L.validatePhone("(11) 98765-4321"));
-    ok(L.validatePhone("+55 11 2977-6777"));
-    ok(!L.validatePhone("98765-4321"), "sem DDD deve falhar");
   });
 
   /* ---------- Horários ---------- */
 
   test("getStatus: aberto durante o expediente", function () {
-    var s = L.getStatus(store.hours, WED_10H);
+    var s = L.getStatus(hours, WED_10H);
     ok(s.open);
     eq(s.label, "Aberto agora · até 21h");
   });
 
   test("getStatus: antes de abrir", function () {
-    var s = L.getStatus(store.hours, new Date(2026, 9, 14, 5, 15));
+    var s = L.getStatus(hours, new Date(2026, 9, 14, 5, 15));
     ok(!s.open);
     eq(s.label, "Fechado · abre hoje às 6h");
   });
 
   test("getStatus: depois de fechar abre amanhã", function () {
-    var s = L.getStatus(store.hours, new Date(2026, 9, 14, 21, 0));
+    var s = L.getStatus(hours, new Date(2026, 9, 14, 21, 0));
     ok(!s.open, "21h em ponto já está fechado");
     eq(s.label, "Fechado · abre amanhã às 6h");
   });
 
   test("getStatus: pula o dia fechado (segunda)", function () {
-    var s = L.getStatus(store.hours, new Date(2026, 9, 18, 14, 0)); // domingo 14h
+    var s = L.getStatus(hours, new Date(2026, 9, 18, 14, 0)); // domingo 14h
     eq(s.label, "Fechado · abre terça às 6h");
   });
 
   test("groupHours agrupa dias iguais e marca fechado", function () {
-    var g = L.groupHours(store.hours);
+    var g = L.groupHours(hours);
     eq(g.map(function (x) { return x.label + ": " + x.text; }), [
       "Segunda: Fechado",
       "Terça a sábado: 6h às 21h",
@@ -112,110 +98,21 @@
     eq(days.sort(), [0, 1, 2, 3, 4, 5, 6]);
   });
 
-  /* ---------- Encomendas: dias e horários ---------- */
+  /* ---------- Links externos ---------- */
 
-  test("slotsFor respeita antecedência de 24h", function () {
-    var tomorrow = new Date(2026, 9, 15);
-    var slots = L.slotsFor(store, tomorrow, WED_10H);
-    eq(slots[0], "10:00", "primeiro horário amanhã é 24h depois");
-    eq(slots[slots.length - 1], "20:00", "último é 1h antes de fechar");
+  test("ifoodLink usa a página configurada da loja", function () {
+    var url = "https://www.ifood.com.br/delivery/sao-paulo-sp/la-brunet-santana/abc123";
+    eq(L.ifoodLink({ name: "La Brunet", ifoodUrl: url }), url);
   });
 
-  test("slotsFor não oferece hoje nem dia fechado", function () {
-    eq(L.slotsFor(store, new Date(2026, 9, 14), WED_10H), []);
-    eq(L.slotsFor(store, new Date(2026, 9, 19), WED_10H), [], "segunda fechada");
+  test("ifoodLink sem página configurada cai na busca pelo nome", function () {
+    eq(L.ifoodLink({ name: "La Brunet", ifoodUrl: null }), "https://www.ifood.com.br/busca?q=La%20Brunet");
+    eq(L.ifoodLink({ name: "La Brunet", ifoodUrl: "   " }), "https://www.ifood.com.br/busca?q=La%20Brunet");
   });
 
-  test("availableDates começa amanhã e pula segundas", function () {
-    var dates = L.availableDates(store, WED_10H).map(L.isoDate);
-    eq(dates[0], "2026-10-15");
-    ok(dates.indexOf("2026-10-19") === -1, "segunda não aparece");
-    ok(dates.indexOf("2026-10-28") !== -1, "dentro da janela de 14 dias");
-    ok(dates.indexOf("2026-10-29") === -1, "fora da janela");
-  });
-
-  test("availableDates: pedido às 20h30 pula para depois de amanhã", function () {
-    var late = new Date(2026, 9, 14, 20, 30);
-    eq(L.slotsFor(store, new Date(2026, 9, 15), late), [], "amanhã já não cabe 24h");
-    eq(L.isoDate(L.availableDates(store, late)[0]), "2026-10-16");
-  });
-
-  test("isoDate e parseIsoDate fazem ida e volta", function () {
-    var d = new Date(2026, 0, 5);
-    eq(L.isoDate(d), "2026-01-05");
-    eq(L.parseIsoDate("2026-01-05").getTime(), d.getTime());
-  });
-
-  /* ---------- Carrinho ---------- */
-
-  test("cartAdd soma e remove ao zerar", function () {
-    var c = L.cartAdd({}, "a", 1);
-    c = L.cartAdd(c, "a", 2);
-    eq(c, { a: 3 });
-    c = L.cartAdd(c, "a", -3);
-    eq(c, {});
-  });
-
-  test("cartAdd não altera o carrinho original", function () {
-    var c = { a: 1 };
-    L.cartAdd(c, "a", 1);
-    eq(c, { a: 1 });
-  });
-
-  test("cartSet limita e limpa valores inválidos", function () {
-    eq(L.cartSet({ a: 1 }, "a", 0), {});
-    eq(L.cartSet({}, "a", "abc"), {});
-    eq(L.cartSet({}, "a", 5000), { a: 999 });
-  });
-
-  test("cartTotal e cartCount ignoram itens inexistentes", function () {
-    var c = { a: 10, c: 3, fantasma: 4 };
-    eq(L.cartCount(c, products), 13);
-    eq(L.cartTotal(c, products), 41.7);
-  });
-
-  /* ---------- Validação e mensagem ---------- */
-
-  function goodOrder() {
-    return { cart: { a: 2, b: 2 }, date: "2026-10-15", time: "15:00", name: "Ana", phone: "11987654321", notes: "" };
-  }
-
-  test("validateOrder aceita pedido completo", function () {
-    eq(L.validateOrder(goodOrder(), store, products, WED_10H), {});
-  });
-
-  test("validateOrder aponta cada campo faltando", function () {
-    var e = L.validateOrder({ cart: {}, date: null, time: null, name: "", phone: "123" }, store, products, WED_10H);
-    eq(Object.keys(e).sort(), ["cart", "date", "name", "phone"]);
-  });
-
-  test("validateOrder exige mínimo do bolo", function () {
-    var o = goodOrder();
-    o.cart = { b: 1 };
-    ok(/mínimo de 2 kg/.test(L.validateOrder(o, store, products, WED_10H).cart));
-  });
-
-  test("validateOrder recusa horário que já passou da antecedência", function () {
-    var o = goodOrder();
-    o.time = "08:00";
-    ok(L.validateOrder(o, store, products, WED_10H).time);
-  });
-
-  test("buildOrderMessage traz itens, total, retirada e contato", function () {
-    var o = goodOrder();
-    o.notes = "Bolo de brigadeiro";
-    var m = L.buildOrderMessage(o, store, products);
-    ok(m.indexOf("• 2 × Pão A (unidade) — R$ 2,40") !== -1, "linha do pão");
-    ok(m.indexOf("Total estimado: R$ 242,40") !== -1, "total");
-    ok(m.indexOf("Retirada: quinta, 15 de outubro, às 15h00") !== -1, "retirada");
-    ok(m.indexOf("Telefone: (11) 98765-4321") !== -1, "telefone");
-    ok(m.indexOf("Observações: Bolo de brigadeiro") !== -1, "observações");
-    ok(m.indexOf("referência") === -1, "sem aviso quando preço é real");
-  });
-
-  test("buildOrderMessage avisa quando preços são de referência", function () {
-    var s = Object.assign({}, store, { pricesAreSample: true });
-    ok(L.buildOrderMessage(goodOrder(), s, products).indexOf("Valores do site são de referência") !== -1);
+  test("ifoodLink recusa link que não é do iFood", function () {
+    eq(L.ifoodLink({ name: "La Brunet", ifoodUrl: "https://exemplo.com/ifood.com.br/x" }), "https://www.ifood.com.br/busca?q=La%20Brunet");
+    eq(L.ifoodLink({ name: "La Brunet", ifoodUrl: "javascript:alert(1)" }), "https://www.ifood.com.br/busca?q=La%20Brunet");
   });
 
   test("whatsappLink codifica o texto", function () {
@@ -229,6 +126,11 @@
     eq(L.searchProducts(products, "FRANGO catupiry", null).map(function (p) { return p.id; }), ["c"]);
     eq(L.searchProducts(products, "vegano", "todos").map(function (p) { return p.id; }), ["a"]);
     eq(L.searchProducts(products, "", null).length, 3);
+  });
+
+  test("searchProducts filtra por categoria", function () {
+    eq(L.searchProducts(products, "", "festas").map(function (p) { return p.id; }), ["b"]);
+    eq(L.searchProducts(products, "pao", "festas"), []);
   });
 
   /* ---------- Dados do site ---------- */
@@ -254,6 +156,10 @@
 
   test("data.js: galeria tem texto alternativo", function () {
     D.gallery.forEach(function (g) { ok(g.alt && g.alt.length > 5, "foto sem alt: " + g.src); });
+  });
+
+  test("data.js: link do iFood gera endereço do iFood", function () {
+    ok(/^https:\/\/www\.ifood\.com\.br\//.test(L.ifoodLink(D.store)));
   });
 
   /* ---------- Saída ---------- */
