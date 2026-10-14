@@ -72,7 +72,7 @@ def main():
             errors.append(f"link externo sem noopener: {href}")
 
     for ref in c.local_refs:
-        if not (ROOT / ref).exists():
+        if not (ROOT / ref.split("?")[0]).exists():
             errors.append(f"arquivo não encontrado: {ref}")
 
     # Ícones usados pelo JavaScript também precisam existir.
