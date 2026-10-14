@@ -23,10 +23,9 @@
       zip: "02404-000"
     },
     phone: { display: "(11) 2977-6777", tel: "+551129776777" },
-    // Link da página da La Brunet no iFood (ex.:
-    // "https://www.ifood.com.br/delivery/sao-paulo-sp/la-brunet-santana/...").
-    // Enquanto for null, os botões abrem a busca do iFood por "La Brunet".
-    ifoodUrl: null,
+    // Link da página da La Brunet no iFood. Se ficar null, os botões
+    // abrem a busca do iFood por "La Brunet".
+    ifoodUrl: "https://www.ifood.com.br/delivery/sao-paulo-sp/padaria-la-brunet-santana/f953d941-b5cf-49c5-b85f-097d4142eadd",
     // Número de WhatsApp da loja no formato internacional, só dígitos
     // (ex.: "5511999999999"). Enquanto for null, o contato mostra só o telefone.
     whatsapp: null,

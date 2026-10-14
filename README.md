@@ -54,7 +54,6 @@ Algumas informações não puderam ser confirmadas em fontes públicas e estão 
 
 | Item | Situação | Onde mudar |
 | --- | --- | --- |
-| **Link do iFood** | **não informado** — os botões abrem a busca do iFood por "La Brunet" | `store.ifoodUrl` |
 | WhatsApp da loja | não informado — o contato mostra só o telefone | `store.whatsapp` |
 | Horário de funcionamento | **de referência** — aparece com "*" e aviso "a confirmar" | `store.hours` e `confirmed: true` |
 | Preços | **de referência** — aparecem com "*" e aviso | `price` de cada produto e `pricesAreSample: false` |
