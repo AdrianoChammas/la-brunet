@@ -141,7 +141,8 @@
   }
 
   function priceHTML(p) {
-    return '<span class="price">' + L.formatBRL(p.price) + (store.pricesAreSample ? "*" : "") + "</span>";
+    var from = p.from ? '<span class="price__from">a partir de</span>' : "";
+    return '<span class="price">' + from + L.formatBRL(p.price) + (store.pricesAreSample ? "*" : "") + "</span>";
   }
 
   /* ---------- Destaques ---------- */
@@ -176,13 +177,27 @@
       return '<span class="tag' + (t === "encomenda" ? " tag--encomenda" : "") + '">' + esc(t) + "</span>";
     }).join("");
     var thumb = p.img
-      ? '<span class="item__thumb"><img src="' + p.img.replace("w=900", "w=200") + '" alt="" loading="lazy" width="72" height="72"></span>'
+      ? '<span class="item__thumb"><img src="' + (p.thumb || p.img) + '" alt="" loading="lazy" width="72" height="72"></span>'
       : '<span class="item__thumb item__thumb--empty" aria-hidden="true">' + esc(p.name.charAt(0)) + "</span>";
     return '<article class="item">' + thumb +
       '<div class="item__main"><div class="item__line"><h4 class="item__name">' + esc(p.name) + '</h4><span class="item__dots" aria-hidden="true"></span></div>' +
       '<p class="item__desc">' + esc(p.desc) + "</p>" +
       '<div class="item__meta"><span class="item__unit">' + esc(p.unit) + "</span>" + tags + "</div></div>" +
       '<div class="item__side">' + priceHTML(p) + "</div></article>";
+  }
+
+  // Itens com "sub" viram subgrupos com título dentro da categoria.
+  function groupsHTML(items) {
+    var groups = [];
+    items.forEach(function (p) {
+      var last = groups[groups.length - 1];
+      if (last && last.sub === (p.sub || "")) last.items.push(p);
+      else groups.push({ sub: p.sub || "", items: [p] });
+    });
+    return groups.map(function (g) {
+      var head = g.sub && groups.length > 1 ? '<h4 class="menu-sub">' + esc(g.sub) + "</h4>" : "";
+      return head + '<div class="menu-items">' + g.items.map(itemHTML).join("") + "</div>";
+    }).join("");
   }
 
   function renderMenu() {
@@ -196,7 +211,7 @@
       var items = found.filter(function (p) { return p.cat === c.id; });
       if (!items.length) return "";
       return '<section class="menu-cat" aria-labelledby="cat-' + c.id + '"><header class="menu-cat__head"><h3 class="menu-cat__title" id="cat-' + c.id + '">' + esc(c.label) + "</h3>" +
-        '<p class="menu-cat__intro">' + esc(c.intro) + '</p></header><div class="menu-items">' + items.map(itemHTML).join("") + "</div></section>";
+        '<p class="menu-cat__intro">' + esc(c.intro) + "</p></header>" + groupsHTML(items) + "</section>";
     }).join("");
   }
 

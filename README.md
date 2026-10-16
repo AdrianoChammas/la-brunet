@@ -9,7 +9,7 @@ Página única, estática (HTML, CSS e JavaScript puros, sem build), pronta para
 - **Abertura** com fotografia em tela cheia, marca, chamadas para o cardápio e para o delivery no iFood, e destaques da casa.
 - **Cabeçalho fixo** com endereço, telefone e status "aberto agora / fecha às…" calculado pelo horário; menu em gaveta no celular.
 - **Da fornada**: composição editorial com os cinco produtos em destaque.
-- **Cardápio** completo por categoria (pães, salgados, confeitaria, café da manhã, pizzas, bebidas, encomendas & festas), com filtro por categoria, busca sem acento ("pao" acha "pão") e etiquetas vegano / sem glúten / vegetariano.
+- **Cardápio** real da La Brunet (169 itens com foto, tirados do cardápio online em labrunet.com.br): café da manhã, pães, salgados, lanches, frango assado, frios, confeitaria, bebidas, mercearia e, sob encomenda, festas & coffee break, mini salgados, doces e cestas. Filtro por categoria, subgrupos, busca sem acento ("pao" acha "pão") e "a partir de" nos itens com variações.
 - **Delivery**: os pedidos são feitos no iFood. O botão "Pedir no iFood" aparece no cabeçalho, na abertura, no menu do celular, no cardápio, na seção Delivery e no contato. Bolos inteiros e itens de festa são encomendados pelo telefone.
 - **A casa**: narrativa da marca e diferenciais.
 - **Galeria** com ampliação das fotos.
@@ -26,6 +26,7 @@ assets/js/data.js       DADOS DA LOJA: endereço, horários, link do iFood, What
 assets/js/lib.js        funções puras (horários, links do iFood e WhatsApp, busca)
 assets/js/app.js        comportamento da página
 assets/img/favicon.svg  ícone
+assets/img/cardapio/    fotos dos produtos
 tests/                  testes e servidor local
 ```
 
@@ -56,9 +57,9 @@ Algumas informações não puderam ser confirmadas em fontes públicas e estão 
 | --- | --- | --- |
 | WhatsApp da loja | não informado — o contato mostra só o telefone | `store.whatsapp` |
 | Horário de funcionamento | **de referência** — aparece com "*" e aviso "a confirmar" | `store.hours` e `confirmed: true` |
-| Preços | **de referência** — aparecem com "*" e aviso | `price` de cada produto e `pricesAreSample: false` |
-| Cardápio | itens típicos de padaria; confirmar com a loja | `products` |
-| Fotos | ilustrativas, do Unsplash (licença livre); trocar por fotos da própria La Brunet | `IMG(...)` em `data.js` e `index.html` |
+| Preços | do cardápio online da loja (out/2026) — aparecem com "*" e aviso de que podem mudar | `price` de cada produto e `pricesAreSample: false` |
+| Cardápio | itens do cardápio online da loja (out/2026) | `products` |
+| Fotos | dos produtos: do cardápio online da La Brunet, em `assets/img/cardapio/` (`.jpg` 600 px e `-p.jpg` miniatura); abertura e galeria: Unsplash | `img`/`thumb` em `data.js`; `IMG(...)` em `data.js` e `index.html` |
 | Instagram / e-mail | não informados | `store.instagram`, `store.email` |
 | Nota no Google | 4,3 com mais de 4.800 avaliações, segundo diretório público | `index.html` (abertura) |
 
