@@ -8,10 +8,6 @@
 (function (global) {
   "use strict";
 
-  var IMG = function (id, w) {
-    return "https://images.unsplash.com/photo-" + id + "?auto=format&fit=crop&q=75&w=" + (w || 900);
-  };
-
   var store = {
     name: "La Brunet",
     tagline: "Padaria, confeitaria e café em Santana",
@@ -267,22 +263,22 @@
     { id: "kit-doce-delicioso-chocolates", cat: "cestas", sub: "Kits caixa", name: "Kit Doce Delicioso Chocolates", desc: "1 Caixa Em Papel Decorado, 1 Urso De Pelúcia, 1 Planta Suculenta, 1 Mini Bolo Decorado, 3 Brigadeiros Gourmet Belga (Ao Leite, Pistache, Ao Leite Com Avelãs), 1 Chocolate Kinder White 391, 1 Chocolate.", price: 289.9, unit: "unidade", tags: ["encomenda"], featured: false, img: "assets/img/cardapio/kit-doce-delicioso-chocolates.jpg", thumb: "assets/img/cardapio/kit-doce-delicioso-chocolates-p.jpg" }
   ];
 
+  // Fotos do cardápio online da La Brunet.
   var gallery = [
-    { src: IMG("1509440159596-0249088772ff", 1400), alt: "Pães rústicos com sementes e ramos de trigo sobre a mesa", size: "wide" },
-    { src: IMG("1537734796389-e1fc293cf856", 900), alt: "Mãos segurando uma bola de massa de pão", size: "tall" },
-    { src: IMG("1530610476181-d83430b64dcd", 900), alt: "Croissants recém-assados no balcão", size: "" },
-    { src: IMG("1534432182912-63863115e106", 900), alt: "Vitrine com doces, tortas e folhados", size: "" },
-    { src: IMG("1543233604-3baca4d35513", 900), alt: "Xícara de café sobre livros", size: "tall" },
-    { src: IMG("1620921592619-652411a0d01a", 1400), alt: "Pão de fermentação natural fatiado sobre tábua", size: "wide" },
-    { src: IMG("1595801105145-795f1927c0fc", 900), alt: "Farinha caindo sobre a massa", size: "" },
-    { src: IMG("1609590981063-d495e2914ce4", 900), alt: "Folhados e pães doces servidos na mesa", size: "" }
+    { src: "assets/img/cardapio/frango-assado-acompanha-farofa-e-batata.jpg", alt: "Frango assado com farofa e batatas", size: "wide" },
+    { src: "assets/img/cardapio/croissant-folhado.jpg", alt: "Croissants folhados", size: "tall" },
+    { src: "assets/img/cardapio/coxinha-de-camarao.jpg", alt: "Coxinhas de camarão", size: "" },
+    { src: "assets/img/cardapio/bolo-redondo-de-prestigio.jpg", alt: "Bolo redondo de prestígio", size: "" },
+    { src: "assets/img/cardapio/cappuccino-frozen.jpg", alt: "Cappuccino frozen com chantilly", size: "tall" },
+    { src: "assets/img/cardapio/frios-especiais.jpg", alt: "Tábua de frios especiais", size: "wide" },
+    { src: "assets/img/cardapio/pastel-de-belem.jpg", alt: "Pastéis de Belém", size: "" },
+    { src: "assets/img/cardapio/sanduiches-pernil-rosbife.jpg", alt: "Sanduíche de pernil", size: "" }
   ];
 
   global.LB_DATA = {
     store: store,
     categories: categories,
     products: products,
-    gallery: gallery,
-    img: IMG
+    gallery: gallery
   };
 })(window);

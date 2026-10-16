@@ -59,7 +59,7 @@ Algumas informações não puderam ser confirmadas em fontes públicas e estão 
 | Horário de funcionamento | **de referência** — aparece com "*" e aviso "a confirmar" | `store.hours` e `confirmed: true` |
 | Preços | do cardápio online da loja (out/2026) — aparecem com "*" e aviso de que podem mudar | `price` de cada produto e `pricesAreSample: false` |
 | Cardápio | itens do cardápio online da loja (out/2026) | `products` |
-| Fotos | dos produtos: do cardápio online da La Brunet, em `assets/img/cardapio/` (`.jpg` 600 px e `-p.jpg` miniatura); abertura e galeria: Unsplash | `img`/`thumb` em `data.js`; `IMG(...)` em `data.js` e `index.html` |
+| Fotos | dos produtos: do cardápio online da La Brunet, em `assets/img/cardapio/` (`.jpg` 600 px e `-p.jpg` miniatura); abertura (`assets/img/casa/`), "A casa" e galeria usam as mesmas fotos | `img`/`thumb` e `gallery` em `data.js`; abertura em `index.html` |
 | Instagram / e-mail | não informados | `store.instagram`, `store.email` |
 | Nota no Google | 4,3 com mais de 4.800 avaliações, segundo diretório público | `index.html` (abertura) |
 
